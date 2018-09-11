@@ -1,0 +1,41 @@
+package Org.Bhavya.HRApplication.HRApp.Test;
+
+import static org.junit.Assert.assertThat;
+
+import java.util.Map;
+
+import org.junit.Assert;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import Org.Bhavya.HRApplication.HRApp.Database.EmployeeDatabase;
+import Org.Bhavya.HRApplication.HRApp.Exception.EmployeeNotFoundException;
+import Org.Bhavya.HRApplication.HRApp.Model.Address;
+import Org.Bhavya.HRApplication.HRApp.Model.Contact;
+import Org.Bhavya.HRApplication.HRApp.Model.Employee;
+import Org.Bhavya.HRApplication.HRApp.Service.EmployeeService;
+
+
+public class EmployeeTest {
+	 
+
+	EmployeeService eService = new EmployeeService();
+	
+	@Test
+	public void testGetEmployeeSuccessful()
+	{
+		Employee emp = eService.getEmployee("105");
+		System.out.println("emp" + emp);
+		Contact c5 = new Contact("0800099995", "9100099995", "OPK@gmail.com");
+		Address a5 = new Address("House5", "Street5", "AB115AO", "Mumbai", "Maharastra");
+	    Employee empy = new Employee("Emp5", "105", "CICS", c5, a5);
+	    System.out.println("empy" + empy);
+
+	    Assert.assertTrue(emp.equals(empy));
+	}
+
+	
+}
+	
+
